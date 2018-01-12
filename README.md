@@ -22,7 +22,7 @@ The file scripts/sequence_to_multivec.py takes a fasta file and outputs an hdf5 
 sequence names to nx6 arrays, each of which represent the nucleotides in that sequence.
 
 To use this file:
- - Navigate to clodius/scripts, and run:
+Navigate to clodius/scripts, and run:
 
  ```
  python sequence_to_multivec.py [path_to_your_fasta_file] [output_path]
@@ -31,11 +31,11 @@ To use this file:
 
 To run tests for this file:
 
- - Download nose using using:
+Download nose using using:
  ```
  pip install nose
  ```
- - Navigate to clodius/test, and run:
+Navigate to clodius/test, and run:
  ```
  nosetests sequence_to_multivec_test.py
  ```
