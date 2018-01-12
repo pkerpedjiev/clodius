@@ -35,7 +35,7 @@ def sequence_to_array(fasta_file):
 
     for key in record_dict.keys():
         sequence = record_dict[key]
-        nucleotide_array = f.create_dataset(str(key), (len(str(sequence.seq)), 6), "f")  # is value in dict
+        nucleotide_array = f.create_dataset(str(key), (len(str(sequence.seq)), 6), "f", compression="gzip")  # is value in dict
         temporary_array = []
         # order: [A, T, G, C, N, Other]
         for i in range(0, len(str(sequence.seq))):
