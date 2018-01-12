@@ -18,10 +18,11 @@ The output files can then be displayed using the [higlass-docker container](http
 
 ## Sequence to Multivec
 
-The file scripts/sequence_to_multivec.py takes a fasta file and outputs an hdf5 file containing a key to value mapping of
+The file **scripts/sequence_to_multivec.py** takes a fasta file and outputs an hdf5 file containing a key to value mapping of
 sequence names to nx6 arrays, each of which represent the nucleotides in that sequence.
 
 To use this file:
+
 Navigate to clodius/scripts, and run:
 
  ```
