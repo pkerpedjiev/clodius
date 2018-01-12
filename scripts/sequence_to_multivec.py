@@ -1,18 +1,11 @@
 #!/usr/bin/python
 
-from Bio import SeqIO
-import pprint
 import h5py
-import numpy as np
-import sys
 import argparse
-
-#  TODO create an h5py file, then write to the file instead of placing inside aggregated_dict.
-#  TODO h5py files have 'groups' which are files that together act like key value pairs in a dictionary.
-#  TODO use these to do dictionary
+from Bio import SeqIO
 
 
-def sequence_to_array(fasta_file):
+def sequence_to_array(fasta_file, output_path):
     """
     Convert a genomic sequence to a dictionary of 5xn arrays of
     nucleotides.
@@ -29,7 +22,7 @@ def sequence_to_array(fasta_file):
         A dictionary indexed by the sequence names containing 5xn arrays
         where the position of the letter is 1 and the other values are 0
     """
-    f = h5py.File("aggregated_dict.hdf5", "w")  # root group
+    f = h5py.File(output_path, "w")  # root group
     record_dict = SeqIO.to_dict(SeqIO.parse(fasta_file, "fasta"))
     # aggregated_dict = {}
 
@@ -56,16 +49,13 @@ def sequence_to_array(fasta_file):
 
     f.close()
 
-    #     aggregated_dict[sequence.id] = nucleotide_array
-    #
-    # pprint.pprint(aggregated_dict)
-
 
 def main():
     parser = argparse.ArgumentParser(description="""description""")
     parser.add_argument('fasta_file')
+    parser.add_argument('output_path')
     args = parser.parse_args()
-    sequence_to_array(args.fasta_file)
+    sequence_to_array(args.fasta_file, args.output_path)
 
 
 if __name__ == '__main__':  # if inside terminal this gets called. if in python interpreter call main directly

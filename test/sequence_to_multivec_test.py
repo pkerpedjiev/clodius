@@ -1,18 +1,21 @@
-import nose
 import numpy as np
 import h5py
 from Bio import SeqIO
 import unittest
-import scripts.sequence_aggregation as seq
+import scripts.sequence_to_multivec as seq
 
 
-class SequenceAggregationTest(unittest.TestCase):
+class SequenceToMultivecTest(unittest.TestCase):
 
     def setUp(self):
-        filename = '../../shorter.fna'
+        filename = './sample_data/shorter.fna'
+        output_path = './sample_data/aggregated_dict.hdf5'
         self.original_fasta = SeqIO.to_dict(SeqIO.parse(filename, "fasta"))
-        seq.sequence_to_array(filename)
-        self.result = h5py.File('../scripts/aggregated_dict.hdf5', 'r')
+        seq.sequence_to_array(filename, output_path)
+        self.result = h5py.File(output_path, 'r')
+
+    def tearDown(self):
+        self.result.close()
 
     def test_length(self):
         """ The shorter.fna file has 3 keys, so the result h5py file should have 3 keys. """

@@ -16,6 +16,20 @@ clodius aggregate bigwig ~/Downloads/E116-DNase.fc.signal.bigwig
 
 The output files can then be displayed using the [higlass-docker container](https://github.com/hms-dbmi/higlass-docker). For more information about viewing these types of files take a look at the [higlass wiki](https://github.com/hms-dbmi/higlass/wiki#bigwig-files).
 
+## Sequence to Multivec
+
+The file scripts/sequence_to_multivec.py takes a fasta file and outputs an hdf5 file containing a key to value mapping of
+sequence names to nx6 arrays, each of which represent the nucleotides in that sequence.
+
+To use this file:
+ - Navigate to clodius/scripts, and run: python sequence_to_multivec.py [path_to_your_fasta_file] [output_path]
+ - * Important: The output path must specify a file name ending in '.h5py'.
+
+To run tests for this file:
+
+ - Download nose using using: pip install nose
+ - Navigate to clodius/test, and run: nosetests sequence_to_multivec_test.py
+
 ## Development
 
 
