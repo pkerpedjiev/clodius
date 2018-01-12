@@ -23,7 +23,7 @@ sequence names to nx6 arrays, each of which represent the nucleotides in that se
 
 To use this file:
  - Navigate to clodius/scripts, and run: python sequence_to_multivec.py [path_to_your_fasta_file] [output_path]
- - *Important: The output path must specify a file name ending in '.h5py'.*
+ **Important:** The output path must specify a file name ending in '.h5py'.
 
 To run tests for this file:
 
